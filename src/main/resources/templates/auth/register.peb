@@ -1,0 +1,64 @@
+{% extends "../layout/app.peb" %}
+{% block content %}
+
+    <div class="h-screen py-10">
+        <div class="w-full max-w-md mx-auto">
+            {% include "./_header.peb" %}
+            <form class="bg-white p-8 mx-auto bg-white shadow-md rounded mb-4 {{ errors.isEmpty() ? '' : 'border-red-500 border' }}"
+                  method="POST" action="{{ route('register') }}">
+                {% csrf %}
+                <div class="pb-8 text-indigo-600">
+                    <h1 class="text-2xl text-center font-normal">Hello!</h1>
+                    <h2 class="text-xl text-center font-normal">It's nice to meet you :)</h2>
+                    <h4 class="text-sm text-center font-normal text-gray-700 mt-2">
+                        Sign up by entering your information below
+                    </h4>
+                </div>
+                <div class="mt-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="name"> Name </label>
+                    <input class="text-lg shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline {{ whenError('name', 'border-red-500') }}"
+                           id="name" type="text" name="name" value="{{ old('name') }}" required>
+                    {% if hasError('name') %}
+                        <p class="text-red-600 text-sm mt-2">{{ firstError('name') }}</p>
+                    {% endif %}
+                </div>
+                <div class="mt-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="email"> Email Address </label>
+                    <input class="text-lg shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline {{ whenError('email', 'border-red-500') }}"
+                           id="email" type="text" name="email" value="{{ old('email') }}" required>
+                    {% if hasError('email') %}
+                        <p class="text-red-600 text-sm mt-2">{{ firstError('email') }}</p>
+                    {% endif %}
+                </div>
+                <div class="mt-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="password"> Password </label>
+                    <input class="text-lg shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline {{ whenError('password', 'border-red-500') }}"
+                           id="password" type="password" name="password" required>
+                    {% if hasError('password') %}
+                        <p class="text-red-600 text-sm mt-2">{{ firstError('password') }}</p>
+                    {% endif %}
+                </div>
+                <div class="mt-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="confirm-password"> Confirm Password </label>
+                    <input class="text-lg shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline {{ whenError('confirm_password', 'border-red-500') }}"
+                           id="confirm-password" type="password" name="confirm_password" required>
+                    {% if hasError('password') %}
+                        <p class="text-red-600 text-sm mt-2">{{ firstError('confirm_password') }}</p>
+                    {% endif %}
+                </div>
+                <div class="mt-10">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="submit">
+                        Register
+                    </button>
+
+                </div>
+                <div class="text-sm mt-6">
+                    Already have an account?
+                    <a class="text-indigo-600 hover:text-indigo-800 font-bold" href="{{ route('login') }}">Log in</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "../layout/app.peb" %}
+{% block content %}
+
+    <div class="h-screen py-10">
+        <div class="w-full max-w-md mx-auto">
+            {% include "./_header.peb" %}
+            <div class="bg-white p-8 mx-auto bg-white shadow-md rounded mb-4">
+                <div class="pb-8">
+                    <div class="text-indigo-600 my-12">
+                        <svg aria-hidden="true" focusable="false" class="mx-auto" role="img" height="46"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                  d="M464 4.3L16 262.7C-7 276-4.7 309.9 19.8 320L160 378v102c0 30.2 37.8 43.3 56.7 20.3l60.7-73.8 126.4 52.2c19.1 7.9 40.7-4.2 43.8-24.7l64-417.1C515.7 10.2 487-9 464 4.3zM192 480v-88.8l54.5 22.5L192 480zm224-30.9l-206.2-85.2 199.5-235.8c4.8-5.6-2.9-13.2-8.5-8.4L145.5 337.3 32 290.5 480 32l-64 417.1z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-xl text-center font-normal text-gray-800">Please Verify Your Email</h1>
+                    <p class="text-sm text-center font-normal text-gray-700 text-lg my-8">
+                        We've sent an email to <span class="font-bold">{{ auth.user.email }} </span> with a link to
+                        verify your account.
+                    </p>
+
+                    <p class="text-sm text-center font-normal text-gray-700 text-lg my-8">
+                        Please follow the link in the email to complete the registration.
+                    </p>
+
+                    <form action="{{ route('verification.resend') }}" method="post" class="text-center">
+                        {% csrf %}
+                        <button class="hover:text-indigo-700 mt-12 text-indigo-600 text-lg" type="submit">
+                            Resend verification email
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

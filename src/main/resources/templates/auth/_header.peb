@@ -1,0 +1,7 @@
+<a href="/" class="text-5xl font-thin text-center my-10 flex justify-center items-center">
+    <div class="ml-2">{{ env('APP_NAME', 'Alpas') }}</div>
+</a>
+
+{% if hasFlash('success') %}
+    <div class="bg-green-100 text-green-900 mb-2 p-4 text-lg">{{ flash('success') }}</div>
+{% endif %}
