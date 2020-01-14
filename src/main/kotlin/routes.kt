@@ -14,7 +14,12 @@ fun Router.addRoutes() = apply {
 }
 
 private fun RouteGroup.webRoutesGroup() {
+    get("/home") {
+        redirect().toRouteNamed("projects.list")
+    }
+
     get("/", WelcomeController::class).name("welcome")
+
     group("projects") {
         addProjectRoutes()
     }.name("projects").mustBeAuthenticated()
