@@ -1,0 +1,39 @@
+{% extends "layout/app.peb" %}
+{% block content %}
+<div class="h-screen mt-10 pt-10">
+    <div class="w-full max-w-xl mx-auto">
+        <form class="bg-white p-8 mx-auto bg-white shadow-md rounded mb-4 {{ errors.isEmpty() ? '' : 'border-red-500 border' }}"
+              method="POST" action="{{ route('projects.store') }}">
+        {% csrf %}
+            <div class="text-gray-600">
+                <h2 class="text-xl text-center uppercase py-4">Create a Project</h2>
+                <div class="mt-4 bg-gray-200 rounded">
+                    <label class="block p-3 uppercase" for="title">Title</label>
+                    <input class="text-lg bg-gray-200 appearance-none w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-none {{ whenError('title', 'border-red-500') }}"
+                           id="title" type="text" name="title" value="{{ old('title') }}" autofocus>
+                    {% if hasError('title') %}
+                        <p class="text-red-600 text-sm p-2">{{ firstError('title') }}</p>
+                    {% endif %}
+                </div>
+                <div class="mt-8 bg-gray-200 rounded">
+                    <label class="block p-3 uppercase" for="description">Description</label>
+                    <textarea id="description" name="description" rows="3"
+                              class="text-lg bg-gray-200 appearance-none w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-none {{ whenError('description', 'border-red-500') }}">{{ old('description', '') }}</textarea>
+                    {% if hasError('description') %}
+                        <p class="text-red-600 text-sm p-2">{{ firstError('description') }}</p>
+                    {% endif %}
+                </div>
+                <div class="flex justify-end mt-10">
+                    <a href="{{ route('projects.list') }}" class="hover:text-orange-700 text-red-600 mx-8 self-center">
+                        Cancel
+                    </a>
+                    <button class="bg-indigo-700 hover:bg-indigo-800 text-white py-3 px-6 rounded focus:outline-none focus:shadow-outline"
+                            type="submit">
+                        Create
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
