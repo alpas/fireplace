@@ -6,6 +6,7 @@ import dev.alpas.fireplace.guards.CreateProjectGuard
 import dev.alpas.http.HttpCall
 import dev.alpas.orAbort
 import dev.alpas.ozone.create
+import dev.alpas.ozone.findOrFail
 import dev.alpas.routing.Controller
 import me.liuwj.ktorm.dsl.delete
 import me.liuwj.ktorm.dsl.eq
@@ -35,5 +36,10 @@ class ProjectController : Controller() {
         Projects.delete { it.id eq id }
         flash("success", "Successfully deleted the project!")
         call.redirect().back()
+    }
+
+    fun show(call: HttpCall) {
+        val id = call.paramAsInt("id").orAbort()
+        call.render("project_show", mapOf("project" to Projects.findOrFail(id)))
     }
 }

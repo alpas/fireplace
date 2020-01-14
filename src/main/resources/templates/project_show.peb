@@ -1,0 +1,15 @@
+{# @pebvariable name="project" type="dev.alpas.fireplace.entities.Project" #}
+
+{% extends "layout/app.peb" %}
+{% block content %}
+<div class="my-2 p-10">
+    <a href="{{ route('projects.list') }}" class="text-gray-800 hover:text-indigo-600 uppercase focus:outline-none">&leftarrow;
+        All Projects</a>
+    <div class="mt-10">
+        <div class="p-6 bg-gray-100">
+            <div class="text-2xl font-light">{{ project.title }}</div>
+            <p class="text-gray-800 text-lg py-4"> {{ project.description }} </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
