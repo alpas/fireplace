@@ -10,6 +10,12 @@
             <div class="text-2xl font-light">{{ project.title }}</div>
             <p class="text-gray-800 text-lg py-4"> {{ project.description }} </p>
         </div>
+        <div class="border border-t border-gray-200 my-10"></div>
+        <div>
+            <div class="text-gray-600 text-xl font-light font-uppercase uppercase">Tasks</div>
+            <tasks :initial-tasks="{{ project.tasks is empty ? '[]' : project.tasks | json_encode }}"
+                   :project-id="{{ project.id }}" class="mt-4"></tasks>
+        </div>
     </div>
 </div>
 {% endblock %}
