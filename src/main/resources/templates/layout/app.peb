@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <title>🚀 Alpas</title>
+    <title>🔥 Fireplace</title>
     <style>
         #menu-toggle:checked + #menu {
             display: block;
@@ -15,85 +15,103 @@
 
 <body class="antialiased bg-gray-200 h-full">
 <div id="app">
-    {% if not routeIsOneOf(['login', 'register', 'password.request', 'password.reset']) %}
-        <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center py-3">
-            <div class="flex-1 flex justify-between items-center">
-                <a href="/" class="text-xl font-medium"> 🚀 Alpas</a>
-            </div>
+{% if not routeIsOneOf(['login', 'register', 'password.request', 'password.reset']) %}
+    <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center py-3">
+        <div class="flex-1 flex justify-between items-center">
+            <a href="/" class="text-2xl text-center flex justify-center items-center text-gray-800">
+                <div class="ml-2 flex">
+                    <svg class="h-6 inline-block self-center text-gray-700" aria-hidden="true" focusable="false"
+                         role="img"
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <g class="fa-group">
+                            <path class="fa-secondary" fill="#e25822"
+                                  d="M371.2 281.6a289.37 289.37 0 0 0-28.9 30 390.58 390.58 0 0 0-51.1-55.6c-50.5 45.6-86.4 105-86.4 140.8a115.2 115.2 0 0 0 230.4 0c0-26.6-26.7-81.6-64-115.2zm-13.4 166.9a64.22 64.22 0 0 1-37.8 12.3c-35.3 0-64-24.4-64-64 0-19.7 11.9-37.1 35.6-66.8 3.4 4.1 48.3 64.1 48.3 64.1l28.7-34.2c2 3.5 3.9 6.9 5.5 10.2 13.4 26.6 7.8 60.8-16.3 78.4z"
+                                  opacity="1"></path>
+                            <path class="fa-primary" fill="currentColor"
+                                  d="M624 0H16A16 16 0 0 0 0 16v64a16 16 0 0 0 16 16h608a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16zM32 512h96V384c0-106 86-192 192-192s192 86 192 192v128h96V128H32z"></path>
+                        </g>
+                    </svg>
 
-            <label for="menu-toggle" class="pointer-cursor lg:hidden block">
-                <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                     viewBox="0 0 20 20"><title>menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                </svg>
-            </label>
-            <input class="hidden" type="checkbox" id="menu-toggle"/>
-
-            <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
-                <div class="flex flex-col-reverse lg:flex lg:flex-row lg:w-auto w-full mt-6 lg:mt-0">
-                    {% guest %}
-                        <nav>
-                            <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-                                <li>
-                                    <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
-                                       href="{{ route('login') }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round" class="inline">
-                                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-                                            <polyline points="10 17 15 12 10 7"></polyline>
-                                            <line x1="15" y1="12" x2="3" y2="12"></line>
-                                        </svg>
-                                        Log in
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
-                                       href="{{ route('register') }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                             stroke-linejoin="round" class="inline">
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="8.5" cy="7" r="4"></circle>
-                                            <line x1="20" y1="8" x2="20" y2="14"></line>
-                                            <line x1="23" y1="11" x2="17" y2="11"></line>
-                                        </svg>
-                                        Register
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        {% else %}
-                        <form action="{{ route('logout') }}" method="post">
-                            {% csrf %}
-                            <button class="bg-transparent hover:bg-indigo-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-4"
-                                    type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none"
-                                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                     class="inline mr-1">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                    <polyline points="16 17 21 12 16 7"></polyline>
-                                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                                </svg>
-                                Log Out
-                            </button>
-                        </form>
-                    {% endguest %}
-                    {% auth %}
-                        <div class="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor border-b lg:border-0 pb-4 lg:pb-0">
-                            <img class="rounded-full w-10 h-10 border-2 border-gray-300"
-                                 src="{{ auth.user.gravatarUrl() }}" alt="{{ auth.user.email }}">
-                            <span class="ml-3 text-gray-700">{{ auth.user.email }}</span>
-                        </div>
-                    {% endauth %}
+                    <span class="ml-2">
+                    {{ env('APP_NAME') }}
+                    </span>
                 </div>
+            </a>
+        </div>
+
+        <label for="menu-toggle" class="pointer-cursor lg:hidden block">
+            <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 20 20"><title>menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
+        </label>
+        <input class="hidden" type="checkbox" id="menu-toggle"/>
+
+        <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+            <div class="flex flex-col-reverse lg:flex lg:flex-row lg:w-auto w-full mt-6 lg:mt-0">
+            {% guest %}
+                <nav>
+                    <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
+                        <li>
+                            <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                               href="{{ route('login') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="inline">
+                                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                    <polyline points="10 17 15 12 10 7"></polyline>
+                                    <line x1="15" y1="12" x2="3" y2="12"></line>
+                                </svg>
+                                Log in
+                            </a>
+                        </li>
+                        <li>
+                            <a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                               href="{{ route('register') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="inline">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                </svg>
+                                Register
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            {% else %}
+                <form action="{{ route('logout') }}" method="post">
+                {% csrf %}
+                    <button class="bg-transparent hover:bg-indigo-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-4"
+                            type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="inline mr-1">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Log Out
+                    </button>
+                </form>
+            {% endguest %}
+            {% auth %}
+                <div class="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor border-b lg:border-0 pb-4 lg:pb-0">
+                    <img class="rounded-full w-10 h-10 border-2 border-gray-300"
+                         src="{{ auth.user.gravatarUrl() }}" alt="{{ auth.user.email }}">
+                    <span class="ml-3 text-gray-700">{{ auth.user.email }}</span>
+                </div>
+            {% endauth %}
             </div>
-        </header>
-    {% endif %}
-    <main>
-        {% block content %} {% endblock %}
-    </main>
+        </div>
+    </header>
+{% endif %}
+<main>
+    {% block content %} {% endblock %}
+</main>
 </div>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
