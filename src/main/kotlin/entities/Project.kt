@@ -3,7 +3,9 @@ package dev.alpas.fireplace.entities
 import dev.alpas.ozone.MigratingTable
 import dev.alpas.ozone.bigIncrements
 import dev.alpas.ozone.mediumText
+import me.liuwj.ktorm.dsl.eq
 import me.liuwj.ktorm.entity.Entity
+import me.liuwj.ktorm.entity.findList
 import me.liuwj.ktorm.schema.long
 import me.liuwj.ktorm.schema.text
 import me.liuwj.ktorm.schema.timestamp
@@ -17,6 +19,7 @@ interface Project : Entity<Project> {
     val createdAt: Instant?
     val updatedAt: Instant?
     val owner: User
+    val tasks get() = Tasks.findList { it.projectId eq id }
 
     companion object : Entity.Factory<Project>()
 }
