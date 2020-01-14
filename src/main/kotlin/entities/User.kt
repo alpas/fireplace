@@ -25,7 +25,7 @@ interface User : Entity<User>, Authenticatable {
     val emailVerifiedAt: Instant?
 
     override val mustVerifyEmail: Boolean
-        get() = true
+        get() = false
 
     override fun isEmailVerified() = emailVerifiedAt != null
 
