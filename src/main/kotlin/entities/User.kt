@@ -8,6 +8,7 @@ import dev.alpas.ozone.bigIncrements
 import me.liuwj.ktorm.dsl.eq
 import me.liuwj.ktorm.entity.Entity
 import me.liuwj.ktorm.entity.findById
+import me.liuwj.ktorm.entity.findList
 import me.liuwj.ktorm.entity.findOne
 import me.liuwj.ktorm.schema.timestamp
 import me.liuwj.ktorm.schema.varchar
@@ -28,6 +29,8 @@ interface User : Entity<User>, Authenticatable {
         get() = false
 
     override fun isEmailVerified() = emailVerifiedAt != null
+
+    val projects get() = Projects.findList { it.ownerId eq id }
 
     @ExperimentalUnsignedTypes
     fun gravatarUrl(): String {
