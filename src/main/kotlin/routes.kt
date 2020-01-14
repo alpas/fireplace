@@ -10,11 +10,16 @@ fun Router.addRoutes() = apply {
     group {
         webRoutesGroup()
     }.middlewareGroup("web")
-    authRoutes(requireEmailVerification = false)
+    authRoutes(requireEmailVerification = false, addHomeRoute = false)
 }
 
 private fun RouteGroup.webRoutesGroup() {
+    get("/home") {
+        redirect().toRouteNamed("projects.list")
+    }
+
     get("/", WelcomeController::class).name("welcome")
+
     group("projects") {
         addProjectRoutes()
     }.name("projects").mustBeAuthenticated()
