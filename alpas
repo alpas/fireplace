@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APP_NAME="__APP_NAME__"
+APP_NAME="fireplace"
 
 APP_BIN_PATH="./build/install/$APP_NAME/bin/$APP_NAME"
 
@@ -148,9 +148,9 @@ elif [[ $1 == *"init"* ]]; then
     cp ./.env.example ./.env
 
     # todo: replace perl with bash
-    perl -p -i -e 's/__PACKAGE__/'"$2"'/g' `grep -Ril --exclude-dir=node_modules --exclude-dir=.gradle --exclude-dir=.idea  __PACKAGE__ .`
+    perl -p -i -e 's/dev.alpas.fireplace/'"$2"'/g' `grep -Ril --exclude-dir=node_modules --exclude-dir=.gradle --exclude-dir=.idea  dev.alpas.fireplace .`
     app_name="${2##*.}"
-    perl -p -i -e 's/__APP_NAME__/'"${app_name}"'/g' `grep -Ril --exclude-dir=node_modules --exclude-dir=.gradle --exclude-dir=.idea  __APP_NAME__ .`
+    perl -p -i -e 's/fireplace/'"${app_name}"'/g' `grep -Ril --exclude-dir=node_modules --exclude-dir=.gradle --exclude-dir=.idea  fireplace .`
 
     cecholn "BLUE" " Generating your app key."
     app_key=$(env LC_CTYPE=C tr -dc "A-Za-z0-9_$%^&*()-+=" </dev/urandom | head -c 32 | base64)

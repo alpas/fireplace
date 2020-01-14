@@ -1,5 +1,5 @@
-import __PACKAGE__.ConsoleKernel
-import __PACKAGE__.addRoutes
+import dev.alpas.fireplace.ConsoleKernel
+import dev.alpas.fireplace.addRoutes
 import dev.alpas.pulsar.TestBase
 import dev.alpas.routing.Router
 

@@ -1,4 +1,4 @@
-package __PACKAGE__
+package dev.alpas.fireplace
 
 import dev.alpas.Application
 import dev.alpas.ServiceProvider

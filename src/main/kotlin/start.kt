@@ -1,4 +1,4 @@
-package __PACKAGE__
+package dev.alpas.fireplace
 
 import dev.alpas.Alpas
 

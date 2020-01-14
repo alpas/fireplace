@@ -11,12 +11,12 @@ plugins {
 }
 
 startScripts {
-    applicationName = '__APP_NAME__'
+    applicationName = 'fireplace'
 }
 
-mainClassName = '__PACKAGE__.StartKt'
+mainClassName = 'dev.alpas.fireplace.StartKt'
 
-group '__PACKAGE__'
+group 'dev.alpas.fireplace'
 version '1.0.0'
 
 repositories {
@@ -45,13 +45,13 @@ compileTestKotlin {
 
 jar {
     manifest {
-        attributes 'Main-Class': '__PACKAGE__.StartKt'
+        attributes 'Main-Class': 'dev.alpas.fireplace.StartKt'
     }
 }
 
 shadowJar {
     destinationDir = file("./")
-    baseName = '__APP_NAME__'
+    baseName = 'fireplace'
     classifier = null
     version = null
 }
@@ -61,5 +61,5 @@ test {
 }
 
 installDist {
-    destinationDir = file("./build/install/__APP_NAME__")
+    destinationDir = file("./build/install/fireplace")
 }
