@@ -1,6 +1,7 @@
 package dev.alpas.fireplace.controllers
 
 import dev.alpas.fireplace.entities.Projects
+import dev.alpas.fireplace.entities.User
 import dev.alpas.http.HttpCall
 import dev.alpas.orAbort
 import dev.alpas.ozone.create
@@ -11,7 +12,8 @@ import me.liuwj.ktorm.entity.findAll
 
 class ProjectController : Controller() {
     fun index(call: HttpCall) {
-        val projects = Projects.findAll()
+        val caller = caller<User>()
+        val projects = caller.projects
         call.render("project_list", mapOf("projects" to projects))
     }
 
