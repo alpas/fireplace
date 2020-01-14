@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Alpas - The Rapid and Delightful Kotlin Web Framework</title>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Halant:300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="flex h-screen m-auto flex-col error-500">
+    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow text-center">
+        <h1 class="title"> 500 </h1>
+        <h1 class="subtitle"> Server Error </h1>
+        {% if env('APP_LEVEL') == "dev" %}
+            <p class="text my-md">This is what happened:</p>
+            <pre> {{ stacktrace }} </pre>
+        {% else %}
+
+            <div class="mx-auto my-10">
+                <img src="/500.svg" alt="Server Error!" width="460px">
+            </div>
+            <div class="my-4 text leading-snug">
+                <p>Uh, oh! We ran into an issue.</p>
+                <p>This is our fault but not yours. We'll find the culprit who did this. But first, let's
+                    safely <a href="/" class="text-indigo-600 hover:text-red-500">get back home</a>!</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+</body>
+
+</html>

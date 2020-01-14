@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Alpas - The Rapid and Delightful Kotlin Web Framework</title>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Halant:300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="flex h-screen m-auto flex-col error-404">
+    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow text-center">
+        <h1 class="title"> 404 </h1>
+        <h2 class="subtitle"> Page Not Found </h2>
+        <div class="mx-auto my-10">
+            <img src="/404.svg" alt="Page not found!" width="460px">
+        </div>
+        <div class="my-4 text leading-snug">
+            <p>We made a few rounds looking everywhere for that page but we couldn't locate it.</p>
+            <p class="pt-4">Getting lost in space is no fun.</p>
+            <p><a href="/" class="text-indigo-600 hover:text-red-500">&leftarrow; Let's go home!</a></p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
