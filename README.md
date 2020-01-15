@@ -1,8 +1,5 @@
 ### Alpas - The Rapid and Delightful Kotlin Web Framework. Easy, elegant, and productive! 🚀
 
->This repo is the starter template for the [Alpas web framework](https://alpas.dev). If you want to contribute to
->the core of Alpas framework, please visit the [core Alpas repository](https://github.com/alpas/alpas).
-
 Alpas is batteries-included web framework for Kotlin with a strong focus on developers' productivity.
 The main goal of Alpas is to get you started quick and enable you to move faster while
 letting you enjoy doing what you are the best at — crafting a delightful web app.
@@ -19,33 +16,15 @@ delightful than it already is.
 
 We have sweated picking the good parts, so you don’t have to!
 
-### Who is Alpas for?
+### Running Fireplace on your local machine
 
-Alpas is for you if you are looking to learn some dynamic web development.
+To contribute to the documentation of Alpas, please follow the following steps:
 
-If you are tired of the complexities of a dynamic web programming ecosystem, Alpas is for you.
-
-If you are tired of gigantic "enterprisey" web frameworks, Alpas is for you. 
-
-If you just want to enjoy writing a web app using a ["happy programming language"][happy-kotlin] with a
-framework that has everything you need but still gets out of your way, then Alpas is definitely for you!
-
-### Learning Alpas
-
-Alpas is extensively, thoroughly, and meticulously documented; and, no, we are not just talking about code
-comments and hand-waving! We have put as much effort writing and updating the documentation as we have
-spent time crafting the framework, and we are proud of it!
-
-The [Alpas documentation site][alpas-docs] has everything you need to get started and get going—including
-two full featured tutorials showing you how to write web apps from start to finish.
-
-If you are not satisfied with the quality of Alpas documentation or feel like something is not properly
-documented, please open an issue, and we'll tackle it with a high priority. Feel free to send a pull
-request if you want, of course!
-
-We want you to enjoy writing a web app in Alpas. If you are not, please let us know, and we'll keep it
-improving until it is just right for all of us. The best way to let us help you is by joining our 
-[official Slack][alpas-slack] and asking questions. [Please do!][alpas-slack].
+1. Make sure you have all the [system requirements needed by Alpas](https://alpas.dev/docs/installation).
+2. Fork this repo and clone it on your machine.
+3. Make a copy of `.env.example` and name it `.env`.
+4. The root of the project contains a `alpas` file. Make it executable: `chmod +x ./alpas`
+5. Make sure you have a MySQL database named `fireplace`. You can tweak database settings in your `.env` file.
 
 
 [happy-kotlin]: https://medium.com/signal-v-noise/kotlin-makes-me-a-happier-better-programmer-1fc668724563
