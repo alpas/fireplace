@@ -30,8 +30,11 @@ interface User : Entity<User>, Authenticatable {
 
     override fun isEmailVerified() = emailVerifiedAt != null
 
-    val projects get() = Projects.findList { it.ownerId eq id }
-    val membershipProjects get() = ProjectMemberships.findList { it.userId eq id }.map { it.project }
+    val projects get() = lazyFetch("projects") { Projects.findList { it.ownerId eq id } }
+    val membershipProjects
+        get() = lazyFetch("membership_projects") {
+            ProjectMemberships.findList { it.userId eq id }.map { it.project }
+        }
 
     @ExperimentalUnsignedTypes
     fun gravatarUrl(): String {
