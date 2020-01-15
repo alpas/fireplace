@@ -19,6 +19,12 @@ interface Project : Entity<Project> {
     val createdAt: Instant?
     val updatedAt: Instant?
     val owner: User
+    val members: List<User>
+        get() {
+            val name = "members"
+            return this[name] as? List<User> ?: fetchMembers().also { this[name] = it }
+        }
+
     val activities: List<Activity>
         get() {
             val name = "activities"
@@ -37,6 +43,10 @@ interface Project : Entity<Project> {
 
     private fun fetchActivities(): List<Activity> {
         return Activities.findList { it.projectId eq id }.toList()
+    }
+
+    private fun fetchMembers(): List<User> {
+        return ProjectMemberships.findList { it.projectId eq id }.map { it.member }
     }
 
     companion object : Entity.Factory<Project>()

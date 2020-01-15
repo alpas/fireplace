@@ -38,6 +38,16 @@
                 </ul>
             </div>
             <div class="bg-white pt-4 mt-4">
+                <h4 class="text-gray-600 uppercase px-6 font-medium">Members</h4>
+                <ul class="text-sm mt-4 text-black">
+                {% for member in project.members %}
+                    <li class="flex p-3 {{ loop.index is even ? 'bg-gray-100 border border-y' : '' }}">
+                        <img class="rounded-full w-6 h-6 mr-2"
+                             src="{{ member.gravatarUrl() }}" alt="{{ member.name }}">
+                        {{ member.name }} &lt;{{ member.email }}&gt;
+                    </li>
+                {% endfor %}
+                </ul>
                 {% if auth.user.id == project.owner.id %}
                     <form action="{{ route('projects.membership.add', {'project': project.id}) }}" method="post"
                           class="p-6 {{ errors.isEmpty() ? '' : 'border-red-500 border' }}">
