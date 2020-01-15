@@ -2,19 +2,41 @@
 
 {% extends "layout/app.peb" %}
 {% block content %}
+
 <div class="my-2 p-10">
     <a href="{{ route('projects.list') }}" class="text-gray-800 hover:text-indigo-600 uppercase focus:outline-none">&leftarrow;
         All Projects</a>
-    <div class="mt-10">
-        <div class="p-6 bg-gray-100">
-            <div class="text-2xl font-light">{{ project.title }}</div>
-            <p class="text-gray-800 text-lg py-4"> {{ project.description }} </p>
+    <div class="flex mt-10">
+        <div class="flex-grow">
+            <div class="p-6 bg-gray-100">
+                <div class="text-2xl font-light">{{ project.title }}</div>
+                <p class="text-gray-800 text-lg py-4"> {{ project.description }} </p>
+            </div>
+            <div class="border border-t border-gray-200 my-10"></div>
+            <div>
+                <div class="text-gray-600 text-xl font-light font-uppercase uppercase">Tasks</div>
+                <tasks :initial-tasks="{{ project.tasks is empty ? '[]' : project.tasks | json_encode }}"
+                       :project-id="{{ project.id }}" class="mt-4"></tasks>
+            </div>
         </div>
-        <div class="border border-t border-gray-200 my-10"></div>
-        <div>
-            <div class="text-gray-600 text-xl font-light font-uppercase uppercase">Tasks</div>
-            <tasks :initial-tasks="{{ project.tasks is empty ? '[]' : project.tasks | json_encode }}"
-                   :project-id="{{ project.id }}" class="mt-4"></tasks>
+        <div class="w-2/6 ml-2">
+            <div class="bg-white pt-4">
+                <h4 class="text-gray-600 uppercase px-6 font-medium">Activities</h4>
+                <ul class="text-sm mt-4 text-black">
+                {% for activity in project.activities %}
+                    <li class="p-3 {{ loop.index is even ? 'bg-gray-100 border border-y' : '' }}">
+                    {{ activity.user.name }}
+                        <span class="text-gray-600">{{ activity.action }}</span>
+                        <span class="font-medium text-gray-600">
+                            {{ activity.payload.action }} <span class="text-black">{{ activity.payload.title }}</span>
+                            {{ activity.createdAt | ago }}.
+                        </span>
+                    </li>
+                {% else %}
+                    <div class="p-3">No Activities Yet</div>
+                {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
