@@ -8,12 +8,12 @@ import dev.alpas.validation.Rule
 import dev.alpas.validation.ValidationGuard
 import dev.alpas.validation.required
 
-class CreateTaskGuard : ValidationGuard() {
+open class CreateTaskGuard : ValidationGuard() {
     override fun rules(): Map<String, Iterable<Rule>> {
         return mapOf("body" to listOf(JsonField(required())))
     }
 
-    fun commit(): Task {
+    open fun commit(): Task {
         val now = call.nowInCurrentTimezone().toInstant()
         return Tasks.create {
             it.body to call.jsonBody?.get("body")
