@@ -17,7 +17,7 @@ startScripts {
 mainClassName = 'dev.alpas.fireplace.StartKt'
 
 group 'dev.alpas.fireplace'
-version '0.16.1'
+version '0.16.2'
 
 repositories {
     jcenter()
