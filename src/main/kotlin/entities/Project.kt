@@ -20,34 +20,19 @@ interface Project : Entity<Project> {
     val updatedAt: Instant?
     val owner: User
     val members: List<User>
-        get() {
-            val name = "members"
-            return this[name] as? List<User> ?: fetchMembers().also { this[name] = it }
+        get() = lazyFetch("members") {
+            ProjectMemberships.findList { it.projectId eq id }.map { it.member }
         }
 
     val activities: List<Activity>
-        get() {
-            val name = "activities"
-            return this[name] as? List<Activity> ?: fetchActivities().also { this[name] = it }
+        get() = lazyFetch("activities") {
+            Activities.findList { it.projectId eq id }
         }
 
     val tasks: List<Task>
-        get() {
-            val name = "tasks"
-            return this[name] as? List<Task> ?: fetchTasks().also { this[name] = it }
+        get() = lazyFetch("tasks") {
+            Tasks.findList { it.projectId eq id }.toList()
         }
-
-    private fun fetchTasks(): List<Task> {
-        return Tasks.findList { it.projectId eq id }.toList()
-    }
-
-    private fun fetchActivities(): List<Activity> {
-        return Activities.findList { it.projectId eq id }.toList()
-    }
-
-    private fun fetchMembers(): List<User> {
-        return ProjectMemberships.findList { it.projectId eq id }.map { it.member }
-    }
 
     companion object : Entity.Factory<Project>()
 }
@@ -61,4 +46,3 @@ object Projects : MigratingTable<Project>("projects") {
     val createdAt by timestamp("created_at").nullable().bindTo { it.createdAt }
     val updatedAt by timestamp("updated_at").nullable().bindTo { it.updatedAt }
 }
-

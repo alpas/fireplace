@@ -31,6 +31,6 @@
     <logger name="dev.alpas.http.HttpCall" level="warn">
         <appender-ref ref="FILE"/>
     </logger>
-    <logger name="me.liuwj.ktorm.database.Database" level="debug">
+    <logger name="me.liuwj.ktorm.database.Database" level="warn">
     </logger>
 </configuration>
