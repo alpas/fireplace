@@ -37,6 +37,27 @@
                 {% endfor %}
                 </ul>
             </div>
+            <div class="bg-white pt-4 mt-4">
+                {% if auth.user.id == project.owner.id %}
+                    <form action="{{ route('projects.membership.add', {'project': project.id}) }}" method="post"
+                          class="p-6 {{ errors.isEmpty() ? '' : 'border-red-500 border' }}">
+                    {% csrf %}
+                        <label for="member-email" class="text-gray-600">Add a new member</label>
+                        <div class="flex mt-2">
+                            <input id="member-email" type="email" placeholder="member@example.com" name="email"
+                                   value="{{ old('email') }}" required
+                                   class="flex-grow-1 appearance-none bg-gray-200 border border-gray-300 border-white focus:outline-none leading-tight px-3 py-3 rounded text-gray-700 text-lg w-full  {{ whenError('email', 'border-red-500') }}">
+                            <button type="submit"
+                                    class="ml-4 bg-gray-200 border border-gray-500 font-semibold hover:bg-gray-300 px-4 py-2 rounded text-gray-700">
+                                Add
+                            </button>
+                        </div>
+                    {% if hasError('email') %}
+                        <p class="text-red-600 text-sm mt-2">{{ firstError('email') }}</p>
+                    {% endif %}
+                    </form>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
