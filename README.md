@@ -18,8 +18,6 @@ We have sweated picking the good parts, so you don’t have to!
 
 ### Running Fireplace on your local machine
 
-To contribute to the documentation of Alpas, please follow the following steps:
-
 1. Make sure you have all the [system requirements needed by Alpas](https://alpas.dev/docs/installation).
 2. Fork this repo and clone it on your machine.
 3. Make a copy of `.env.example` and name it `.env`.
