@@ -19,7 +19,16 @@ interface Project : Entity<Project> {
     val createdAt: Instant?
     val updatedAt: Instant?
     val owner: User
-    val tasks get() = Tasks.findList { it.projectId eq id }
+    val tasks: List<Task>
+        get() {
+            val name = "tasks"
+            @Suppress("UNCHECKED_CAST")
+            return this[name] as? List<Task> ?: fetchTasks().also { this[name] = it }
+        }
+
+    private fun fetchTasks(): List<Task> {
+        return Tasks.findList { it.projectId eq id }.toList()
+    }
 
     companion object : Entity.Factory<Project>()
 }
