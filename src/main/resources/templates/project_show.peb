@@ -28,7 +28,11 @@
                     {{ activity.user.name }}
                         <span class="text-gray-600">{{ activity.action }}</span>
                         <span class="font-medium text-gray-600">
-                            {{ activity.payload.action }} <span class="text-black">{{ activity.payload.title }}</span>
+                            {{ activity.payload.action }}
+                                {% if activity.payload.member is not empty %}
+                                    {{ activity.payload.member }} to
+                                {% endif %}
+                                <span class="text-black">{{ activity.payload.title }}</span>
                             {{ activity.createdAt | ago }}.
                         </span>
                     </li>
@@ -36,6 +40,37 @@
                     <div class="p-3">No Activities Yet</div>
                 {% endfor %}
                 </ul>
+            </div>
+            <div class="bg-white pt-4 mt-4">
+                <h4 class="text-gray-600 uppercase px-6 font-medium">Members</h4>
+                <ul class="text-sm mt-4 text-black">
+                {% for member in project.members %}
+                    <li class="flex p-3 {{ loop.index is even ? 'bg-gray-100 border border-y' : '' }}">
+                        <img class="rounded-full w-6 h-6 mr-2"
+                             src="{{ member.gravatarUrl() }}" alt="{{ member.name }}">
+                        {{ member.name }} &lt;{{ member.email }}&gt;
+                    </li>
+                {% endfor %}
+                </ul>
+                {% if auth.user.id == project.owner.id %}
+                    <form action="{{ route('projects.membership.add', {'project': project.id}) }}" method="post"
+                          class="p-6 {{ errors.isEmpty() ? '' : 'border-red-500 border' }}">
+                    {% csrf %}
+                        <label for="member-email" class="text-gray-600">Add a new member</label>
+                        <div class="flex mt-2">
+                            <input id="member-email" type="email" placeholder="member@example.com" name="email"
+                                   value="{{ old('email') }}" required
+                                   class="flex-grow-1 appearance-none bg-gray-200 border border-gray-300 border-white focus:outline-none leading-tight px-3 py-3 rounded text-gray-700 text-lg w-full  {{ whenError('email', 'border-red-500') }}">
+                            <button type="submit"
+                                    class="ml-4 bg-gray-200 border border-gray-500 font-semibold hover:bg-gray-300 px-4 py-2 rounded text-gray-700">
+                                Add
+                            </button>
+                        </div>
+                    {% if hasError('email') %}
+                        <p class="text-red-600 text-sm mt-2">{{ firstError('email') }}</p>
+                    {% endif %}
+                    </form>
+                {% endif %}
             </div>
         </div>
     </div>

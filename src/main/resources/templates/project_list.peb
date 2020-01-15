@@ -2,50 +2,77 @@
 {% block content %}
 
 <div class="py-10 h-screen container mx-auto">
-{% if projects is not empty %}
-    <div class="text-gray-800 text-right">
-        <a href="{{ route('projects.create') }}"
-           class="bg-indigo-700 border hover:bg-indigo-800 px-4 py-3 rounded text-indigo-100 text-lg">
-            Create a New Project
-        </a>
+    <div>
+    {% if projects is not empty %}
+        <div class="text-gray-800 text-right">
+            <a href="{{ route('projects.create') }}"
+               class="bg-indigo-700 border hover:bg-indigo-800 px-4 py-3 rounded text-indigo-100 text-lg">
+                Create a New Project
+            </a>
+        </div>
+    {% endif %}
+        <h3 class="text-xl text-gray-500 text-center uppercase tracking-wide clearfix mt-12">Projects owned by you</h3>
+        <div class="max-w-full mx-auto p-10 flex flex-wrap justify-center">
+        {% if projects is empty %}
+            <div class="bg-gray-300 border border-gray-400 h-64 m-2 max-w-3xl max-w-md overflow-hidden p-10 rounded text-xl text-center text-gray-800 w-full flex justify-center flex-col">
+                There are no projects :(
+                <div class="mt-10">
+                    <a href="{{ route('projects.create') }}"
+                       class="bg-indigo-700 border hover:bg-indigo-800 px-4 py-3 rounded text-indigo-100 text-lg">
+                        Create a New Project
+                    </a>
+                </div>
+            </div>
+        {% else %}
+        {% for project in projects %}
+            <a href="{{ route('projects.show', {'id': project.id}) }}"
+               class="max-w-md rounded overflow-hidden shadow-lg m-2 w-1/3 hover-controller bg-white hover:bg-gray-100">
+                <div class="p-10 h-full flex flex-col">
+                    <div class="inline-flex w-full">
+                        <h3 class="text-blue-600 font-bold text-xl mb-2 flex-1 hover:text-blue-800">{{ project.title }}</h3>
+                    </div>
+                    <p class="text-gray-700 text-base flex-1"> {{ project.description }} </p>
+
+                    <div class="py-4 flex">
+                        <form action="{{ route('projects.delete', {"id": project.id}) }}" method="POST">
+                        {% csrf %}
+                            <input type="hidden" name="_method" value="delete"/>
+                            <button class="hover:text-red-800 text-red-600 text-sm uppercase hover-target">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        {% endif %}
+        </div>
     </div>
-{% endif %}
-    <h3 class="text-xl text-gray-500 text-center uppercase tracking-wide clearfix mt-12">Projects owned by you</h3>
-    <div class="max-w-full mx-auto p-10 flex flex-wrap justify-center">
-    {% if projects is empty %}
-        <div class="bg-gray-300 border border-gray-400 h-64 m-2 max-w-3xl max-w-md overflow-hidden p-10 rounded text-xl text-center text-gray-800 w-full flex justify-center flex-col">
-            There are no projects :(
-            <div class="mt-10">
-                <a href="{{ route('projects.create') }}"
-                   class="bg-indigo-700 border hover:bg-indigo-800 px-4 py-3 rounded text-indigo-100 text-lg">
-                    Create a New Project
+    {% if membershipProjects is not empty %}
+        <div class="my-10">
+            <h3 class="text-xl text-gray-500 text-center uppercase tracking-wide clearfix mt-12">Projects you are a member of</h3>
+            <div class="h-full max-w-full mx-auto p-10 flex flex-wrap justify-center">
+            {% for project in membershipProjects %}
+                <a href="{{ route('projects.show', {'id': project.id}) }}"
+                   class="max-w-md rounded overflow-hidden shadow-lg m-2 w-1/3 hover-controller bg-white hover:bg-gray-100">
+                    <div class="p-10 h-full flex flex-col">
+                        <div class="inline-flex w-full">
+                            <h3 class="text-gray-700 font-bold text-xl mb-2 flex-1 hover:text-blue-800">{{ project.title }}</h3>
+                        </div>
+                        <p class="text-gray-700 text-base flex-1"> {{ project.description }} </p>
+
+                        <div class="py-4 flex">
+                            <div class="flex-1">
+                                <span class="inline-block bg-gray-300 rounded px-3 py-1 text-sm font-medium text-gray-600">{{ project.tasks.size }}
+                                    Tasks</span>
+                            </div>
+                        </div>
+                    </div>
                 </a>
+            {% endfor %}
             </div>
         </div>
-    {% else %}
-    {% for project in projects %}
-        <a href="{{ route('projects.show', {'id': project.id}) }}"
-           class="max-w-md rounded overflow-hidden shadow-lg m-2 w-1/3 hover-controller bg-white hover:bg-gray-100">
-            <div class="p-10 h-full flex flex-col">
-                <div class="inline-flex w-full">
-                    <h3 class="text-blue-600 font-bold text-xl mb-2 flex-1 hover:text-blue-800">{{ project.title }}</h3>
-                </div>
-                <p class="text-gray-700 text-base flex-1"> {{ project.description }} </p>
-
-                <div class="py-4 flex">
-                    <form action="{{ route('projects.delete', {"id": project.id}) }}" method="POST">
-                    {% csrf %}
-                        <input type="hidden" name="_method" value="delete"/>
-                        <button class="hover:text-red-800 text-red-600 text-sm uppercase hover-target">
-                            Delete
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </a>
-    {% endfor %}
     {% endif %}
-    </div>
 </div>
 
 {% endblock %}
