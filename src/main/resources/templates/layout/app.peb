@@ -13,7 +13,7 @@
     </style>
 </head>
 
-<body class="antialiased bg-gray-200 h-full">
+<body class="antialiased bg-gray-200 h-screen">
 <div id="app">
 {% if not routeIsOneOf(['login', 'register', 'password.request', 'password.reset']) %}
     <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center py-3">
