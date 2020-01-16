@@ -2,6 +2,7 @@ import dev.alpas.fireplace.entities.Project
 import dev.alpas.pulsar.RefreshDatabase
 import dev.alpas.pulsar.from
 import dev.alpas.pulsar.manyFrom
+import io.restassured.RestAssured.get
 import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
@@ -35,16 +36,9 @@ class ProjectListTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `an authorized user can access project list page`() {
-        val user = from(::UserFactory)
-
-        Given {
-            asUser(user)
-        } When {
-            get("/projects")
-        } Then {
-            assertViewIs("project_list")
-            assertViewHas(mapOf("projects" to emptyList<Project>()))
-        }
+        asRandomUser { get("projects") }
+        assertViewIs("project_list")
+        assertViewHas(mapOf("projects" to emptyList<Project>()))
     }
 
     @Test
