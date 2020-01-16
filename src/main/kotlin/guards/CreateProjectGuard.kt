@@ -10,7 +10,7 @@ import dev.alpas.validation.required
 
 class CreateProjectGuard : ValidationGuard() {
     override fun rules(): Map<String, Iterable<Rule>> {
-        return mapOf("title" to listOf(required(), min(8)))
+        return mapOf("title" to listOf(required(), min(8)), "description" to listOf(required()))
     }
 
     fun commit(): Project {
