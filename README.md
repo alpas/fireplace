@@ -21,8 +21,9 @@ We have sweated picking the good parts, so you don’t have to!
 1. Make sure you have all the [system requirements needed by Alpas](https://alpas.dev/docs/installation).
 2. Fork this repo and clone it on your machine.
 3. Make a copy of `.env.example` and name it `.env`.
-4. The root of the project contains a `alpas` file. Make it executable: `chmod +x ./alpas`
-5. Make sure you have a MySQL database named `fireplace`. You can tweak database settings in your `.env` file.
+4. Make sure you have a MySQL database named `fireplace`. You can tweak database settings in your `.env` file.
+5. The root of the project contains an `alpas` script. Make it executable: `chmod +x ./alpas`
+6. Build and serve the project: `./alpas build && ./alpas serve` 
 
 
 [happy-kotlin]: https://medium.com/signal-v-noise/kotlin-makes-me-a-happier-better-programmer-1fc668724563
