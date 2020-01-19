@@ -32,7 +32,7 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `an authorized user can access project add page`() {
-        asRandomUser { get("projects/create") }
+        asAuthorizedUser { get("projects/create") }
         assertViewIs("project_new")
     }
 
