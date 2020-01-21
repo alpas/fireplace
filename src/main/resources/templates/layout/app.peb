@@ -11,6 +11,7 @@
             display: block;
         }
     </style>
+    {% include '_ga.peb' %}
 </head>
 
 <body class="antialiased bg-gray-200 h-screen">
