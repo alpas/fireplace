@@ -1,6 +1,6 @@
 ### Alpas - The Rapid and Delightful Kotlin Web Framework. Easy, elegant, and productive! 🚀
 
-> This app is build by following [Let's build a web app from scratch to finish with Alpas + Kotlin][devto-tutorial] tutorial.
+> This app is built by following [Let's build a web app from scratch to finish with Alpas + Kotlin][devto-tutorial] tutorial.
 
 Alpas is a batteries-included web framework for Kotlin with a strong focus on developers' productivity.
 The main goal of Alpas is to get you started quick and enable you to move faster while
