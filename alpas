@@ -2,8 +2,6 @@
 
 APP_NAME="fireplace"
 
-APP_BIN_PATH="./build/install/$APP_NAME/bin/$APP_NAME"
-
 install() {
   cecholn "YELLOW" "Building $APP_NAME..."
   if ./gradlew "$@" installdist; then
@@ -40,7 +38,6 @@ run_app() {
     export alpas_root_dir="$APP_PATH"
 
     ./gradlew run -q --args="$*" #>/dev/null 2>&1
-    #"$APP_BIN_PATH" "$@"
 
     unset alpas_run_mode
     unset alpas_root_dir
