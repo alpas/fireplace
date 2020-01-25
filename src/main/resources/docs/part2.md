@@ -2,9 +2,9 @@
 
 In this part, we'll scaffold an entire auth system by running a simple command and writing a very minimal amount of code.
 
-> Just to be clear, to keep the tutorials relevant and short, we are not going to cover any CSS, HTML, or JS in
->this series. We will make sure to point out something if we deem it to be mention worthy. For styling, we
->will use TailwindCSS, and for client-side interactivity, we’ll be using JavaScript and some VueJS.
+*Just to be clear, to keep the tutorials relevant and short, we are not going to cover any CSS, HTML, or JS in
+his series. We will make sure to point out something if we deem it to be mention worthy. For styling, we
+will use TailwindCSS, and for client-side interactivity, we’ll be using JavaScript and some VueJS.*
 
 ### Preparing the Database 
 
@@ -26,7 +26,7 @@ DB_CONNECTION=mysql
 Open `configs/DatabaseConfig.kt` and make sure that it is using a connection that matches the type
 you have set for `DB_CONNECTION` in your `.env` file. In our case, this would be `mysql`. (You should just have to uncomment the call to `addConnections` in the init function.)
 
-### Migrating Database
+### Migrating the Database
 
 Authentication requires two database tables—`Users` and `PasswordResetTokens`. Alpas ships with pre-definied versions of these tables/entities. These classes must map to tables in your actual database. To make it easy for you, Alpas already ships with the
 migration files you need to create these two tables. All you need to do is migrate by running the following Alpas command
