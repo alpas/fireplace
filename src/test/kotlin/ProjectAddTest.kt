@@ -62,7 +62,7 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
         } When {
             asUser(user).post("projects")
         } Then {
-            assertResponseHasErrors(mapOf("title" to "The title must be at least 8 characters long."))
+            assertResponseHasErrors(mapOf("title" to "The 'title' must be at least 8 characters long."))
         }
     }
 
