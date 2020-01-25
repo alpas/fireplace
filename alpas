@@ -14,7 +14,12 @@ install() {
 }
 
 build() {
-    install "$@"
+  cecholn "YELLOW" "Building $APP_NAME..."
+  if ./gradlew build -q >/dev/null 2>&1; then
+    cecholn "GREEN" "🙌 Done!"
+  else
+    cecholn "RED" "😿 Failed!"
+  fi
 }
 
 buildJar() {
@@ -26,12 +31,7 @@ buildJar() {
   fi
 }
 
-installQuietly() {
-   install --quiet >/dev/null 2>&1
-}
-
 run_app() {
-  if installQuietly; then
     MY_PATH=$(dirname "$0")
     MY_PATH=$( (cd "$MY_PATH" && pwd))
     APP_PATH="${MY_PATH}"
@@ -39,13 +39,11 @@ run_app() {
     export alpas_run_mode="console"
     export alpas_root_dir="$APP_PATH"
 
-    "$APP_BIN_PATH" "$@"
+    ./gradlew run -q --args="$*" #>/dev/null 2>&1
+    #"$APP_BIN_PATH" "$@"
 
     unset alpas_run_mode
     unset alpas_root_dir
-  else
-    cecholn "RED" "Project build failed."
-  fi
 }
 
 cecholn() {
@@ -102,15 +100,15 @@ if [[ $# -eq 1 ]]; then
     cecholn "GREEN" " ./alpas init com.example.blog"
     ;;
   watch)
-    ./gradlew shadowJar >/dev/null 2>&1
-    java -jar ${APP_NAME}.jar
+    shift;
+    ./gradlew run -t --quiet "$@"
     ;;
   build)
-    install
+    build
     ;;
   serve)
-    ./gradlew shadowJar >/dev/null 2>&1
-    java -jar ${APP_NAME}.jar
+    shift;
+    ./gradlew run --quiet "$@"
     ;;
   help)
     run_app --help
@@ -157,7 +155,7 @@ elif [[ $1 == *"init"* ]]; then
     perl -p -i -e 's/__APP_KEY__/'"base64:${app_key}"'/g' `grep -l __APP_KEY__ .env`
 
     cecholn "BLUE" " Building your app. This will take few seconds."
-    gradle build --quiet >/dev/null 2>&1
+    gradle build -q >/dev/null 2>&1
     build --quiet >/dev/null 2>&1
 
     cecholn "GREEN" " ✓ You app is crafted. Let's build something awesome!"
