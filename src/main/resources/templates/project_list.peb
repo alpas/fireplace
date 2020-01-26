@@ -1,3 +1,4 @@
+{# @pebvariable name="projects" type="java.util.List<dev.alpas.fireplace.entities.Project>" #}
 {% extends "layout/app.peb" %}
 {% block content %}
 
