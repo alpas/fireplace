@@ -14,20 +14,22 @@
 
 <div id="app" class="flex h-screen m-auto flex-col">
     <div class="py-6 px-10 text-right text-lg uppercase font-semibold">
+    <a class="hover:text-indigo-500 text-indigo-600" href="https://kutt.it/eRh4D8">Ask Questions</a>
     {% if hasRoute('login') %}
     {% auth %}
-        <a class="hover:text-red-500" href="/home">Home</a>
+        <a class="hover:text-red-500 ml-4" href="/home">Home</a>
     {% else %}
-        <a class="hover:text-red-500" href="{{ route('login') }}">Log in</a>
+        <a class="hover:text-red-500 ml-4" href="{{ route('login') }}">Log in</a>
     {% if hasRoute('register') %}
         <a class="ml-4 hover:text-red-500" href="{{ route('register') }}"><strong>Register</strong> </a>
     {% endif %}
     {% endauth %}
     {% endif %}
     </div>
-    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow uppercase">
+    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow">
         <div class="mx-auto">
-            <a href="/" class="text-6xl font-thin text-center my-10 flex justify-center items-center text-gray-800">
+            <a href="/"
+               class="text-6xl font-thin text-center my-10 flex justify-center items-center text-gray-800 uppercase">
                 <div class="ml-2 flex">
                     <svg class="h-16 inline-block self-center text-gray-700" aria-hidden="true" focusable="false"
                          role="img"
@@ -44,8 +46,26 @@
                     <span class="ml-4">
                     {{ env('APP_NAME') }}
                     </span>
+
                 </div>
             </a>
+            <div class="text-lg">
+                <span>
+                You can build this app yourself by following a multi-part complete tutorial series
+                </span>
+                <div class="text-xl text-indigo-900 my-5 font-semibold">
+                    Let's build a complete web app from scratch to finish with Alpas and Kotlin.
+                </div>
+
+                <ul class="flex font-semibold">
+                    <li class="">
+                        <a href="https://kutt.it/tj9Z3n" class="text-indigo-600 hover:text-orange-500">Part 0</a>
+                    </li>
+                    <li class="ml-3">
+                        <a href="https://kutt.it/DummZk" class="text-indigo-600 hover:text-orange-500">Part 1</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

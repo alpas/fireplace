@@ -50,6 +50,7 @@
 
         <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
             <div class="flex flex-col-reverse lg:flex lg:flex-row lg:w-auto w-full mt-6 lg:mt-0">
+
             {% guest %}
                 <nav>
                     <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
@@ -83,6 +84,8 @@
                     </ul>
                 </nav>
             {% else %}
+
+                <a class="bg-orange-600 hover:bg-orange-700 text-white font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded mr-4" href="https://kutt.it/eRh4D8">Ask Questions</a>
                 <form action="{{ route('logout') }}" method="post">
                 {% csrf %}
                     <button class="bg-transparent hover:bg-indigo-600 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-4"
