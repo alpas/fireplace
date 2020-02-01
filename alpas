@@ -144,11 +144,11 @@ elif [[ $1 == *"init"* ]]; then
     app_key=$(env LC_CTYPE=C tr -dc "A-Za-z0-9_$%^&*()-+=" </dev/urandom | head -c 32 | base64)
     perl -p -i -e 's/__APP_KEY__/'"base64:${app_key}"'/g' `grep -l __APP_KEY__ .env`
 
-    cecholn "BLUE" " Building your app. This will take few seconds."
+    cecholn "BLUE" " Building your app. This will take a few seconds."
     gradle build -q >/dev/null 2>&1
     build --quiet >/dev/null 2>&1
 
-    cecholn "GREEN" " ✓ You app is crafted. Let's build something awesome!"
+    cecholn "GREEN" " ✓ Your app is crafted. Let's build something awesome!"
     cecholn "GREEN" " Don't forget to checkout the docs: https://alpas.dev/docs"
   fi
 else
