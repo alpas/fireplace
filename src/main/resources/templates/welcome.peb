@@ -14,17 +14,18 @@
 
 <div id="app" class="flex h-screen m-auto flex-col">
     <div class="py-6 px-10 text-right text-lg uppercase font-semibold">
-    <a class="hover:text-indigo-500 text-indigo-600" href="https://kutt.it/eRh4D8">Ask Questions</a>
-    {% if hasRoute('login') %}
-    {% auth %}
-        <a class="hover:text-red-500 ml-4" href="/home">Home</a>
-    {% else %}
-        <a class="hover:text-red-500 ml-4" href="{{ route('login') }}">Log in</a>
-    {% if hasRoute('register') %}
-        <a class="ml-4 hover:text-red-500" href="{{ route('register') }}"><strong>Register</strong> </a>
-    {% endif %}
-    {% endauth %}
-    {% endif %}
+        <a class="hover:text-indigo-500 text-indigo-600 px-5"" href="https://alpas.dev/docs" target="_blank">Documentation</a>
+        <a class="hover:text-indigo-500 text-indigo-600" href="https://kutt.it/eRh4D8">Ask Questions</a>
+        {% if hasRoute('login') %}
+        {% auth %}
+            <a class="hover:text-red-500 ml-4" href="/home">Home</a>
+        {% else %}
+            <a class="hover:text-red-500 ml-4" href="{{ route('login') }}">Log in</a>
+        {% if hasRoute('register') %}
+            <a class="ml-4 hover:text-red-500" href="{{ route('register') }}"><strong>Register</strong> </a>
+        {% endif %}
+        {% endauth %}
+        {% endif %}
     </div>
     <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow">
         <div class="mx-auto">
