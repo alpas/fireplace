@@ -20,9 +20,9 @@ interface User : Entity<User>, Authenticatable {
     override var id: Long
     override var email: String
     override var password: String
-    val name: String?
-    val createdAt: Instant?
-    val updatedAt: Instant?
+    var name: String?
+    var createdAt: Instant?
+    var updatedAt: Instant?
     val emailVerifiedAt: Instant?
 
     override val mustVerifyEmail: Boolean

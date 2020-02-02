@@ -1,9 +1,9 @@
 import dev.alpas.fireplace.entities.Activities
 import dev.alpas.fireplace.entities.Projects
 import dev.alpas.orAbort
+import dev.alpas.ozone.faker
+import dev.alpas.ozone.from
 import dev.alpas.pulsar.RefreshDatabase
-import dev.alpas.pulsar.faker
-import dev.alpas.pulsar.from
 import dev.alpas.pulsar.trapRedirects
 import io.restassured.RestAssured.get
 import io.restassured.module.kotlin.extensions.Given
@@ -38,7 +38,7 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `project title is required`() {
-        val user = from(::UserFactory)
+        val user = from(UserFactory)
 
         Given {
             noCSRFMiddleware()
@@ -53,7 +53,7 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `project title must be of proper length`() {
-        val user = from(::UserFactory)
+        val user = from(UserFactory)
 
         Given {
             noCSRFMiddleware()
@@ -68,7 +68,7 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `project description is required`() {
-        val user = from(::UserFactory)
+        val user = from(UserFactory)
 
         Given {
             noCSRFMiddleware()
@@ -83,7 +83,7 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `user can add a new project`() {
-        val user = from(::UserFactory)
+        val user = from(UserFactory)
 
         val title = faker.lorem().sentence(5)
         val desc = faker.lorem().paragraph()
@@ -116,7 +116,7 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `a project created activity is logged when a new project is created`() {
-        val user = from(::UserFactory)
+        val user = from(UserFactory)
 
         assertEquals(0, Activities.count())
 
