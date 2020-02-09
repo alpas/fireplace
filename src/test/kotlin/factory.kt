@@ -9,7 +9,7 @@ import dev.alpas.ozone.faker
 import dev.alpas.pulsar.app
 import java.time.Instant
 
-internal object UserFactory : EntityFactory<User> {
+internal object UserFactory : EntityFactory<User>() {
     override val table = Users
 
     override fun entity(): User {
@@ -23,7 +23,7 @@ internal object UserFactory : EntityFactory<User> {
     }
 }
 
-internal object ProjectFactory : EntityFactory<Project> {
+internal object ProjectFactory : EntityFactory<Project>() {
     override val table = Projects
 
     override fun entity(): Project {

@@ -1,6 +1,9 @@
 import dev.alpas.fireplace.entities.Activities
+import dev.alpas.fireplace.entities.LibraryCards
 import dev.alpas.fireplace.entities.Projects
+import dev.alpas.fireplace.entities.Users
 import dev.alpas.orAbort
+import dev.alpas.ozone.create
 import dev.alpas.ozone.faker
 import dev.alpas.ozone.from
 import dev.alpas.pulsar.RefreshDatabase
@@ -11,6 +14,7 @@ import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
 import me.liuwj.ktorm.dsl.count
 import me.liuwj.ktorm.dsl.eq
+import me.liuwj.ktorm.entity.findById
 import me.liuwj.ktorm.entity.findOne
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -28,6 +32,19 @@ class ProjectAddTest : TestBase(), RefreshDatabase {
         } Then {
             assertRedirect("/login", 302)
         }
+    }
+
+    @Test
+    fun `library test`() {
+        val user = from(UserFactory)
+        val card = LibraryCards.create {
+            it.userId to user.id
+        }
+
+        val newUser = Users.findById(user.id)
+        assertNotNull(user.libraryCard)
+        assertEquals(card.id, newUser?.libraryCard?.id)
+        assertEquals(user.id, card.user.id)
     }
 
     @Test

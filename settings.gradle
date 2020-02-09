@@ -1,0 +1,3 @@
+include ':framework'//, ':pulsar'
+project (':framework').projectDir = new File('../alpas/framework')
+//project (':pulsar').projectDir = new File('../alpas/pulsar')
