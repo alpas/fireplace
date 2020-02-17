@@ -14,19 +14,19 @@
 
 <div id="app" class="flex h-screen m-auto flex-col">
     <div class="py-6 px-10 text-right text-lg uppercase font-semibold">
-    <a class="hover:text-indigo-500 text-indigo-600" href="https://kutt.it/eRh4D8">Ask Questions</a>
-    {% if hasRoute('login') %}
-    {% auth %}
-        <a class="hover:text-red-500 ml-4" href="/home">Home</a>
-    {% else %}
-        <a class="hover:text-red-500 ml-4" href="{{ route('login') }}">Log in</a>
-    {% if hasRoute('register') %}
-        <a class="ml-4 hover:text-red-500" href="{{ route('register') }}"><strong>Register</strong> </a>
-    {% endif %}
-    {% endauth %}
-    {% endif %}
+        <a class="hover:text-indigo-500 text-indigo-600" href="https://kutt.it/eRh4D8">Ask Questions</a>
+        {% if hasRoute('login') %}
+            {% auth %}
+                <a class="hover:text-red-500 ml-4" href="/home">Home</a>
+                {% else %}
+                <a class="hover:text-red-500 ml-4" href="{{ route('login') }}">Log in</a>
+                {% if hasRoute('register') %}
+                    <a class="ml-4 hover:text-red-500" href="{{ route('register') }}"><strong>Register</strong> </a>
+                {% endif %}
+            {% endauth %}
+        {% endif %}
     </div>
-    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow">
+    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow px-8">
         <div class="mx-auto">
             <a href="/"
                class="text-6xl font-thin text-center my-10 flex justify-center items-center text-gray-800 uppercase">
@@ -43,28 +43,104 @@
                         </g>
                     </svg>
 
-                    <span class="ml-4">
-                    {{ env('APP_NAME') }}
-                    </span>
-
+                    <span class="ml-4">{{ env('APP_NAME') }}</span>
                 </div>
             </a>
             <div class="text-lg">
                 <span>
-                You can build this app yourself by following a multi-part complete tutorial series
+                You can build this app yourself with <a class="font-bold text-green-800 hover:text-gray-900"
+                                                        href="https://alpas.dev">Alpas Kotlin framework</a> by following a multi-part complete tutorial series.
                 </span>
-                <div class="text-xl text-indigo-900 my-5 font-semibold">
-                    Let's build a complete web app from scratch to finish with Alpas and Kotlin.
-                </div>
 
-                <ul class="flex font-semibold">
-                    <li class="">
-                        <a href="https://kutt.it/tj9Z3n" class="text-indigo-600 hover:text-orange-500">Part 0</a>
-                    </li>
-                    <li class="ml-3">
-                        <a href="https://kutt.it/DummZk" class="text-indigo-600 hover:text-orange-500">Part 1</a>
-                    </li>
-                </ul>
+                <div class="flex font-semibold flex-col border rounded-sm p-3 mt-16">
+                    <div class="-m-3">
+                        <div>
+                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2 pl-3">Let's build a web app from
+                                scratch to finish with Alpas
+                                and Kotlin
+                            </div>
+                            <div class="border-b py-4 px-6 flex flex-col md:flex-row">
+                                <a href="https://youtu.be/HGxvqszVU0U" class="text-red-600 hover:text-orange-500">
+                                    <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
+                                                            alt=""></span>Watch on Alpascasts</a>
+                                <a href="https://kutt.it/tj9Z3n"
+                                   class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
+                                <span class="mr-2"><img class="inline-block" src="/icons/dev.svg" alt=""
+                                                        width="24"></span>
+                                    Read on dev.to</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Up and Running</div>
+                            <div class="border-b py-4 px-6 flex flex-col md:flex-row">
+                                <a href="https://youtu.be/Dl7hRtW-iks" class="text-red-600 hover:text-orange-500">
+                                <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
+                                                        alt=""></span>
+                                    Watch on Alpascasts</a>
+                                <a href="https://kutt.it/DummZk"
+                                   class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
+                                <span class="mr-2"><img class="inline-block" src="/icons/dev.svg" alt=""
+                                                        width="24"></span>
+                                    Read on dev.to</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Authentication Scaffolding
+                            </div>
+                            <div class="border-b py-4 px-6 flex flex-col md:flex-row">
+                                <a href="https://youtu.be/rROZO7S2BvY" class="text-red-600 hover:text-orange-500">
+                                <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
+                                                        alt=""></span>
+                                    Watch on Alpascasts</a>
+                                <a href="https://kutt.it/MhVnMD"
+                                   class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
+                                <span class="mr-2"><img class="inline-block" src="/icons/dev.svg" alt=""
+                                                        width="24"></span>
+                                    Read on dev.to</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Displaying a List of
+                                Projects
+                            </div>
+                            <div class="border-b py-4 px-6">
+                                <a href="https://youtu.be/3nUySnd2Myg" class="text-red-600 hover:text-orange-500">
+                                <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
+                                                        alt=""></span>
+                                    Watch on Alpascasts</a>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Creating Projects and
+                                Requiring Authentication on Routes
+                            </div>
+                            <div class="border-b py-4 px-6">
+                                <a href="https://youtu.be/4ut4gepFkwk" class="text-red-600 hover:text-orange-500">
+                                <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
+                                                        alt=""></span>
+                                    Watch on Alpascasts</a>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Cleaning Up Routes and
+                                Displaying a Flash Message
+                            </div>
+                            <div class="border-b py-4 px-6">
+                                <a href="https://youtu.be/uS9ZfwvyjRo" class="text-red-600 hover:text-orange-500">
+                                <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
+                                                        alt=""></span>
+                                    Watch on Alpascasts</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

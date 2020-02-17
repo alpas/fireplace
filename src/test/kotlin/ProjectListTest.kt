@@ -1,7 +1,6 @@
 import dev.alpas.fireplace.entities.Project
+import dev.alpas.ozone.from
 import dev.alpas.pulsar.RefreshDatabase
-import dev.alpas.pulsar.from
-import dev.alpas.pulsar.manyFrom
 import dev.alpas.pulsar.trapRedirects
 import io.restassured.RestAssured.get
 import io.restassured.module.kotlin.extensions.Given
@@ -44,8 +43,8 @@ class ProjectListTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `user's projects are listed`() {
-        val user = from(::UserFactory)
-        val projects = manyFrom(::ProjectFactory, 3, mapOf("owner_id" to user.id))
+        val user = from(UserFactory)
+        val projects = from(ProjectFactory, 3, mapOf("owner_id" to user.id))
 
         Given {
             asUser(user)
@@ -61,11 +60,11 @@ class ProjectListTest : TestBase(), RefreshDatabase {
 
     @Test
     fun `other users' projects are not listed`() {
-        val me = from(::UserFactory)
-        val myProjects = manyFrom(::ProjectFactory, 4, mapOf("owner_id" to me.id))
+        val me = from(UserFactory)
+        val myProjects = from(ProjectFactory, 4, mapOf("owner_id" to me.id))
 
-        manyFrom(::ProjectFactory, 2, mapOf("owner_id" to from(::UserFactory).id))
-        manyFrom(::ProjectFactory, 3, mapOf("owner_id" to from(::UserFactory).id))
+        from(ProjectFactory, 2, mapOf("owner_id" to from(UserFactory).id))
+        from(ProjectFactory, 3, mapOf("owner_id" to from(UserFactory).id))
 
         Given {
             asUser(me)

@@ -25,7 +25,7 @@
     <root level="error">
         <appender-ref ref="STDOUT"/>
     </root>
-    <logger name="alpas" level="debug">
+    <logger name="alpas" level="info">
         <appender-ref ref="FILE"/>
     </logger>
     <logger name="dev.alpas.http.HttpCall" level="warn">

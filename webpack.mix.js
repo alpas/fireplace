@@ -1,6 +1,7 @@
 let mix = require('laravel-mix')
 const tailwindcss = require('tailwindcss')
 const resourcesPath = 'src/main/resources'
+const templatesPath = 'src/main/resources/templates'
 const publicPath = `${resourcesPath}/web`
 
 mix
@@ -20,7 +21,8 @@ if (mix.inProduction()) {
         files: [
             'build/**/*',
             'out/**/*',
-            `${publicPath}`,
+            publicPath,
+            templatesPath
         ],
     })
 }

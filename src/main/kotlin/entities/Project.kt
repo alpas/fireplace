@@ -2,10 +2,9 @@ package dev.alpas.fireplace.entities
 
 import dev.alpas.ozone.MigratingTable
 import dev.alpas.ozone.bigIncrements
+import dev.alpas.ozone.hasMany
 import dev.alpas.ozone.mediumText
-import me.liuwj.ktorm.dsl.eq
 import me.liuwj.ktorm.entity.Entity
-import me.liuwj.ktorm.entity.findList
 import me.liuwj.ktorm.schema.long
 import me.liuwj.ktorm.schema.text
 import me.liuwj.ktorm.schema.timestamp
@@ -13,26 +12,21 @@ import java.time.Instant
 
 interface Project : Entity<Project> {
     val id: Long
-    val title: String
-    val description: String
-    val notes: String?
-    val createdAt: Instant?
-    val updatedAt: Instant?
+    var title: String
+    var description: String
+    var notes: String?
+    var createdAt: Instant?
+    var updatedAt: Instant?
     val owner: User
-    val members: List<User>
-        get() = lazyFetch("members") {
-            ProjectMemberships.findList { it.projectId eq id }.map { it.member }
-        }
 
-    val activities: List<Activity>
-        get() = lazyFetch("activities") {
-            Activities.findList { it.projectId eq id }
-        }
+    val members
+        get() = hasMany(ProjectMemberships).map { it.member }
 
-    val tasks: List<Task>
-        get() = lazyFetch("tasks") {
-            Tasks.findList { it.projectId eq id }.toList()
-        }
+    val activities
+        get() = hasMany(Activities)
+
+    val tasks
+        get() = hasMany(Tasks)
 
     companion object : Entity.Factory<Project>()
 }
