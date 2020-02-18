@@ -12,8 +12,8 @@
 
 <body>
 
-<div id="app" class="flex h-screen m-auto flex-col">
-    <div class="py-6 px-10 text-right text-lg uppercase font-semibold">
+<div id="app" class="flex flex-col">
+    <div class="py-6 px-4 md:px-10 text-right text-lg uppercase font-semibold">
         <a class="hover:text-indigo-500 text-indigo-600" href="https://kutt.it/eRh4D8">Ask Questions</a>
         {% if hasRoute('login') %}
             {% auth %}
@@ -26,118 +26,119 @@
             {% endauth %}
         {% endif %}
     </div>
-    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow px-8">
-        <div class="mx-auto">
-            <a href="/"
-               class="text-6xl font-thin text-center my-10 flex justify-center items-center text-gray-800 uppercase">
-                <div class="ml-2 flex">
-                    <svg class="h-16 inline-block self-center text-gray-700" aria-hidden="true" focusable="false"
-                         role="img"
-                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                        <g class="fa-group">
-                            <path class="fa-secondary" fill="#e25822"
-                                  d="M371.2 281.6a289.37 289.37 0 0 0-28.9 30 390.58 390.58 0 0 0-51.1-55.6c-50.5 45.6-86.4 105-86.4 140.8a115.2 115.2 0 0 0 230.4 0c0-26.6-26.7-81.6-64-115.2zm-13.4 166.9a64.22 64.22 0 0 1-37.8 12.3c-35.3 0-64-24.4-64-64 0-19.7 11.9-37.1 35.6-66.8 3.4 4.1 48.3 64.1 48.3 64.1l28.7-34.2c2 3.5 3.9 6.9 5.5 10.2 13.4 26.6 7.8 60.8-16.3 78.4z"
-                                  opacity="1"></path>
-                            <path class="fa-primary" fill="currentColor"
-                                  d="M624 0H16A16 16 0 0 0 0 16v64a16 16 0 0 0 16 16h608a16 16 0 0 0 16-16V16a16 16 0 0 0-16-16zM32 512h96V384c0-106 86-192 192-192s192 86 192 192v128h96V128H32z"></path>
+    <div class="pb-16 flex flex-col justify-center w-full max-w-4xl mx-auto flex-grow px-8 md:mt-8">
+        <a href="/"
+           class="text-5xl font-thin text-center my-10 flex justify-center items-center text-gray-800 uppercase block">
+            <div class="ml-2 flex items-center">
+                <svg class="h-12 inline-block self-center text-gray-600" viewBox="0 0 640 512"
+                     aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path d="M32,512 L128,512 L128,384 C128,278 214,192 320,192 C426,192 512,278 512,384 L512,512 L608,512 L608,128 L32,128 L32,512 Z"
+                              fill="currentColor" fill-rule="nonzero"></path>
+                        <g transform="translate(204.800000, 256.000000)" fill-rule="nonzero">
+                            <path d="M137.5,55.6 C123.5,36.8 106.1,17.8 86.4,0 C35.9,45.6 4.26325641e-14,105 4.26325641e-14,140.8 C4.26325641e-14,204.4 51.6,256 115.2,256 C178.8,256 230.4,204.4 230.4,140.8 C230.4,114.2 203.7,59.2 166.4,25.6 C155.7,35.2 146,45.4 137.5,55.6 Z"
+                                  fill="#D02702"></path>
+                            <path d="M153,192.5 C142.4,200.2 129.3,204.8 115.2,204.8 C79.9,204.8 51.2,180.4 51.2,140.8 C51.2,121.1 63.1,103.7 86.8,74 C90.2,78.1 135.1,138.1 135.1,138.1 L163.8,103.9 C165.8,107.4 167.7,110.8 169.3,114.1 C182.7,140.7 177.1,174.9 153,192.5 Z"
+                                  fill="#F8E71C"></path>
                         </g>
-                    </svg>
-
-                    <span class="ml-4">{{ env('APP_NAME') }}</span>
-                </div>
-            </a>
-            <div class="text-lg">
+                        <path d="M624,0 L16,0 C7.2,0 0,7.2 0,16 L0,80 C0,88.8 7.2,96 16,96 L624,96 C632.8,96 640,88.8 640,80 L640,16 C640,7.2 632.8,0 624,0 Z"
+                              id="Path" fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                </svg>
+                <span class="ml-3">{{ env('APP_NAME') }}</span>
+            </div>
+        </a>
+        <div class="text-lg">
                 <span>
                 You can build this app yourself with <a class="font-bold text-green-800 hover:text-gray-900"
                                                         href="https://alpas.dev">Alpas Kotlin framework</a> by following a multi-part complete tutorial series.
                 </span>
 
-                <div class="flex font-semibold flex-col border rounded-sm p-3 mt-16">
-                    <div class="-m-3">
-                        <div>
-                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2 pl-3">Let's build a web app from
-                                scratch to finish with Alpas
-                                and Kotlin
-                            </div>
-                            <div class="border-b py-4 px-6 flex flex-col md:flex-row">
-                                <a href="https://youtu.be/HGxvqszVU0U" class="text-red-600 hover:text-orange-500">
+            <div class="flex font-semibold flex-col border rounded-sm p-3 mt-16">
+                <div class="-m-3">
+                    <div>
+                        <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2 pl-3">Let's build a web app from
+                            scratch to finish with Alpas
+                            and Kotlin
+                        </div>
+                        <div class="border-b py-4 px-6 flex flex-col md:flex-row">
+                            <a href="https://youtu.be/HGxvqszVU0U" class="text-red-600 hover:text-orange-500">
                                     <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
                                                             alt=""></span>Watch on Alpascasts</a>
-                                <a href="https://kutt.it/tj9Z3n"
-                                   class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
+                            <a href="https://kutt.it/tj9Z3n"
+                               class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
                                 <span class="mr-2"><img class="inline-block" src="/icons/dev.svg" alt=""
                                                         width="24"></span>
-                                    Read on dev.to</a>
-                            </div>
+                                Read on dev.to</a>
                         </div>
+                    </div>
 
-                        <div>
-                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Up and Running</div>
-                            <div class="border-b py-4 px-6 flex flex-col md:flex-row">
-                                <a href="https://youtu.be/Dl7hRtW-iks" class="text-red-600 hover:text-orange-500">
+                    <div>
+                        <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Up and Running</div>
+                        <div class="border-b py-4 px-6 flex flex-col md:flex-row">
+                            <a href="https://youtu.be/Dl7hRtW-iks" class="text-red-600 hover:text-orange-500">
                                 <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
                                                         alt=""></span>
-                                    Watch on Alpascasts</a>
-                                <a href="https://kutt.it/DummZk"
-                                   class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
+                                Watch on Alpascasts</a>
+                            <a href="https://kutt.it/DummZk"
+                               class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
                                 <span class="mr-2"><img class="inline-block" src="/icons/dev.svg" alt=""
                                                         width="24"></span>
-                                    Read on dev.to</a>
-                            </div>
+                                Read on dev.to</a>
                         </div>
+                    </div>
 
-                        <div>
-                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Authentication Scaffolding
-                            </div>
-                            <div class="border-b py-4 px-6 flex flex-col md:flex-row">
-                                <a href="https://youtu.be/rROZO7S2BvY" class="text-red-600 hover:text-orange-500">
+                    <div>
+                        <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Authentication Scaffolding
+                        </div>
+                        <div class="border-b py-4 px-6 flex flex-col md:flex-row">
+                            <a href="https://youtu.be/rROZO7S2BvY" class="text-red-600 hover:text-orange-500">
                                 <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
                                                         alt=""></span>
-                                    Watch on Alpascasts</a>
-                                <a href="https://kutt.it/MhVnMD"
-                                   class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
+                                Watch on Alpascasts</a>
+                            <a href="https://kutt.it/MhVnMD"
+                               class="block text-gray-700 hover:text-orange-500 mt-4 md:mt-0 md:ml-20">
                                 <span class="mr-2"><img class="inline-block" src="/icons/dev.svg" alt=""
                                                         width="24"></span>
-                                    Read on dev.to</a>
-                            </div>
+                                Read on dev.to</a>
                         </div>
+                    </div>
 
-                        <div>
-                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Displaying a List of
-                                Projects
-                            </div>
-                            <div class="border-b py-4 px-6">
-                                <a href="https://youtu.be/3nUySnd2Myg" class="text-red-600 hover:text-orange-500">
+                    <div>
+                        <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Displaying a List of
+                            Projects
+                        </div>
+                        <div class="border-b py-4 px-6">
+                            <a href="https://youtu.be/3nUySnd2Myg" class="text-red-600 hover:text-orange-500">
                                 <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
                                                         alt=""></span>
-                                    Watch on Alpascasts</a>
-                            </div>
+                                Watch on Alpascasts</a>
                         </div>
+                    </div>
 
 
-                        <div>
-                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Creating Projects and
-                                Requiring Authentication on Routes
-                            </div>
-                            <div class="border-b py-4 px-6">
-                                <a href="https://youtu.be/4ut4gepFkwk" class="text-red-600 hover:text-orange-500">
+                    <div>
+                        <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Creating Projects and
+                            Requiring Authentication on Routes
+                        </div>
+                        <div class="border-b py-4 px-6">
+                            <a href="https://youtu.be/4ut4gepFkwk" class="text-red-600 hover:text-orange-500">
                                 <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
                                                         alt=""></span>
-                                    Watch on Alpascasts</a>
-                            </div>
+                                Watch on Alpascasts</a>
                         </div>
+                    </div>
 
 
-                        <div>
-                            <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Cleaning Up Routes and
-                                Displaying a Flash Message
-                            </div>
-                            <div class="border-b py-4 px-6">
-                                <a href="https://youtu.be/uS9ZfwvyjRo" class="text-red-600 hover:text-orange-500">
+                    <div>
+                        <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Projects: Cleaning Up Routes and
+                            Displaying a Flash Message
+                        </div>
+                        <div class="border-b py-4 px-6">
+                            <a href="https://youtu.be/uS9ZfwvyjRo" class="text-red-600 hover:text-orange-500">
                                 <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
                                                         alt=""></span>
-                                    Watch on Alpascasts</a>
-                            </div>
+                                Watch on Alpascasts</a>
                         </div>
                     </div>
                 </div>
