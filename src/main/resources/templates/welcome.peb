@@ -191,6 +191,16 @@
                                 Watch on Alpascasts</a>
                         </div>
                     </div>
+                    <div>
+                        <div class="text-gray-900 font-bold bg-gray-100 px-3 py-2">Tasks: Deleting Tasks
+                        </div>
+                        <div class="border-b py-4 px-6">
+                            <a href="https://youtu.be/RFmccfo2Zbw" class="text-red-600 hover:text-orange-500">
+                                <span class="mr-2"><img class="inline-block" src="/icons/video.svg" width="26"
+                                                        alt=""></span>
+                                Watch on Alpascasts</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
