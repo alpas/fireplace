@@ -2,10 +2,9 @@ package dev.alpas.fireplace.entities
 
 import dev.alpas.ozone.MigratingTable
 import dev.alpas.ozone.bigIncrements
+import dev.alpas.ozone.hasMany
 import dev.alpas.ozone.mediumText
-import me.liuwj.ktorm.dsl.eq
 import me.liuwj.ktorm.entity.Entity
-import me.liuwj.ktorm.entity.findList
 import me.liuwj.ktorm.schema.long
 import me.liuwj.ktorm.schema.text
 import me.liuwj.ktorm.schema.timestamp
@@ -13,41 +12,21 @@ import java.time.Instant
 
 interface Project : Entity<Project> {
     val id: Long
-    val title: String
-    val description: String
-    val notes: String?
-    val createdAt: Instant?
-    val updatedAt: Instant?
+    var title: String
+    var description: String
+    var notes: String?
+    var createdAt: Instant?
+    var updatedAt: Instant?
     val owner: User
-    val members: List<User>
-        get() {
-            val name = "members"
-            return this[name] as? List<User> ?: fetchMembers().also { this[name] = it }
-        }
 
-    val activities: List<Activity>
-        get() {
-            val name = "activities"
-            return this[name] as? List<Activity> ?: fetchActivities().also { this[name] = it }
-        }
+    val members
+        get() = hasMany(ProjectMemberships).map { it.member }
 
-    val tasks: List<Task>
-        get() {
-            val name = "tasks"
-            return this[name] as? List<Task> ?: fetchTasks().also { this[name] = it }
-        }
+    val activities
+        get() = hasMany(Activities)
 
-    private fun fetchTasks(): List<Task> {
-        return Tasks.findList { it.projectId eq id }.toList()
-    }
-
-    private fun fetchActivities(): List<Activity> {
-        return Activities.findList { it.projectId eq id }.toList()
-    }
-
-    private fun fetchMembers(): List<User> {
-        return ProjectMemberships.findList { it.projectId eq id }.map { it.member }
-    }
+    val tasks
+        get() = hasMany(Tasks)
 
     companion object : Entity.Factory<Project>()
 }
@@ -61,4 +40,3 @@ object Projects : MigratingTable<Project>("projects") {
     val createdAt by timestamp("created_at").nullable().bindTo { it.createdAt }
     val updatedAt by timestamp("updated_at").nullable().bindTo { it.updatedAt }
 }
-

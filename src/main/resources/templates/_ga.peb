@@ -1,0 +1,14 @@
+{% if env('ENABLE_GA') == 'true' %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5531338-11"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', '{{ env('GA_ID') }}');
+    </script>
+{% endif %}

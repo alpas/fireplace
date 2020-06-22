@@ -1,6 +1,7 @@
 let mix = require('laravel-mix')
 const tailwindcss = require('tailwindcss')
 const resourcesPath = 'src/main/resources'
+const templatesPath = 'src/main/resources/templates'
 const publicPath = `${resourcesPath}/web`
 
 mix
@@ -15,8 +16,13 @@ if (mix.inProduction()) {
 } else {
     mix.browserSync({
         open: false,
+        notify: false,
+        proxy: `localhost:${process.env.MIX_APP_PORT}`,
         files: [
             'build/**/*',
+            'out/**/*',
+            publicPath,
+            templatesPath
         ],
     })
 }

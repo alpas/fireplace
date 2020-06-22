@@ -1,5 +1,6 @@
 package dev.alpas.fireplace
 
+import dev.alpas.Environment
 import dev.alpas.auth.authRoutes
 import dev.alpas.fireplace.controllers.ProjectController
 import dev.alpas.fireplace.controllers.ProjectMembershipController
@@ -8,11 +9,11 @@ import dev.alpas.fireplace.controllers.WelcomeController
 import dev.alpas.routing.RouteGroup
 import dev.alpas.routing.Router
 
-fun Router.addRoutes() = apply {
+fun Router.addRoutes(env: Environment) = apply {
     group {
         webRoutesGroup()
     }.middlewareGroup("web")
-    authRoutes(requireEmailVerification = false, addHomeRoute = false)
+    authRoutes(requireEmailVerification = env.isDev, allowPasswordReset = env.isDev, addHomeRoute = false)
 }
 
 private fun RouteGroup.webRoutesGroup() {

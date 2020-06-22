@@ -28,7 +28,11 @@
                     {{ activity.user.name }}
                         <span class="text-gray-600">{{ activity.action }}</span>
                         <span class="font-medium text-gray-600">
-                            {{ activity.payload.action }} <span class="text-black">{{ activity.payload.title }}</span>
+                            {{ activity.payload.action }}
+                                {% if activity.payload.member is not empty %}
+                                    {{ activity.payload.member }} to
+                                {% endif %}
+                                <span class="text-black">{{ activity.payload.title }}</span>
                             {{ activity.createdAt | ago }}.
                         </span>
                     </li>

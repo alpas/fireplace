@@ -1,14 +1,13 @@
 ### Alpas - The Rapid and Delightful Kotlin Web Framework. Easy, elegant, and productive! 🚀
 
->This repo is the starter template for the [Alpas web framework](https://alpas.dev). If you want to contribute to
->the core of Alpas framework, please visit the [core Alpas repository](https://github.com/alpas/alpas).
+> This app is built by following [Let's build a web app from scratch to finish with Alpas + Kotlin][devto-tutorial] tutorial.
 
-Alpas is batteries-included web framework for Kotlin with a strong focus on developers' productivity.
+Alpas is a batteries-included web framework for Kotlin with a strong focus on developers' productivity.
 The main goal of Alpas is to get you started quick and enable you to move faster while
 letting you enjoy doing what you are the best at — crafting a delightful web app.
 
 Alpas strives to be simple and elegant and wants to serve you whether you have written any JVM based web
-apps before or not—there is no xml or properties files to be configured, no scattered annotations
+apps before or not—there is no xml or properties file to configure, no scattered annotations
 to memorize—and yet, there is no huge learning curve to get started.
 
 Alpas comes bundled with most of what you need to write modern web apps—**authentication**,
@@ -19,36 +18,30 @@ delightful than it already is.
 
 We have sweated picking the good parts, so you don’t have to!
 
-### Who is Alpas for?
+### Pre-requisites
 
-Alpas is for you if you are looking to learn some dynamic web development.
+Please visit [Alpas installation documentation][alpas-setup] for a full list of system requirements
+and pre-requisites. Here is a quick list of what you need for Fireplace:
 
-If you are tired of the complexities of a dynamic web programming ecosystem, Alpas is for you.
+* *nix machine. Windows is supported but only under the WSL or using GitBash.
+* JDK version >= 9.0
+* Gradle >= 5.6
+* IntelliJ IDEA Community Editor or Ultimate.
+* A MySQL database. 5.7 is recommended but 8.0 should work just as fine.
+* NodeJS and Yarn for building assets.
 
-If you are tired of gigantic "enterprisey" web frameworks, Alpas is for you. 
+### Running Fireplace on your local machine
 
-If you just want to enjoy writing a web app using a ["happy programming language"][happy-kotlin] with a
-framework that has everything you need but still gets out of your way, then Alpas is definitely for you!
-
-### Learning Alpas
-
-Alpas is extensively, thoroughly, and meticulously documented; and, no, we are not just talking about code
-comments and hand-waving! We have put as much effort writing and updating the documentation as we have
-spent time crafting the framework, and we are proud of it!
-
-The [Alpas documentation site][alpas-docs] has everything you need to get started and get going—including
-two full featured tutorials showing you how to write web apps from start to finish.
-
-If you are not satisfied with the quality of Alpas documentation or feel like something is not properly
-documented, please open an issue, and we'll tackle it with a high priority. Feel free to send a pull
-request if you want, of course!
-
-We want you to enjoy writing a web app in Alpas. If you are not, please let us know, and we'll keep it
-improving until it is just right for all of us. The best way to let us help you is by joining our 
-[official Slack][alpas-slack] and asking questions. [Please do!][alpas-slack].
+1. Make sure you have all the [system requirements needed by Alpas](https://alpas.dev/docs/installation).
+2. Fork this repo and clone it on your machine.
+3. Make a copy of `.env.example` and name it `.env`.
+4. Make sure you have a MySQL database named `fireplace`. You can tweak database settings in your `.env` file.
+5. The root of the project contains an `alpas` script. Make it executable: `chmod +x ./alpas`
+6. Build and serve the project: `./alpas build && ./alpas serve` 
 
 
 [happy-kotlin]: https://medium.com/signal-v-noise/kotlin-makes-me-a-happier-better-programmer-1fc668724563
 [alpas-slack]: https://join.slack.com/t/alpasdev/shared_invite/enQtODcwMjE1MzMxODQ3LTJjZWMzOWE5MzBlYzIzMWQ2MTcxN2M2YjU3MTQ5ZDE4NjBmYjY1YTljOGIwYmJmYWFlYjc4YTcwMDFmZDIzNDE
 [alpas-docs]: https://alpas.dev/docs
-
+[alpas-setup]: https://alpas.dev/docs/installation
+[devto-tutorial]: https://dev.to/ashokgelal/let-s-build-a-web-app-from-scratch-to-finish-with-alpas-and-kotlin-29eo
